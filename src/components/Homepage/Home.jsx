@@ -18,6 +18,7 @@ import {
   LineChart,
   Line,
 } from "recharts";
+import "./Home.css";
 
 function Home() {
   const data = [
@@ -68,7 +69,7 @@ function Home() {
   return (
     <main className="main-container">
       <div className="main-title">
-        <h3>DASHBOARD</h3>
+        <h3>Dashboard</h3>
       </div>
 
       <div className="main-cards">

@@ -6,7 +6,8 @@ import {
   BsSearch,
   BsJustify,
 } from "react-icons/bs";
-import Search from "./Search";
+import Search from "../Search/Search";
+import "./Header.css";
 
 function Header({ OpenSidebar }) {
   return (
