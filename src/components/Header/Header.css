@@ -1,0 +1,30 @@
+/* Header  */
+.header {
+  background-color: #2962ff;
+  grid-area: header;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px 0 30px;
+  box-shadow: 0 6px 7px -3px rgba(0, 0, 0, 0.35);
+}
+
+.menu-icon {
+  display: none;
+}
+/* End Header  */
+
+/* Extra Small <= 576px */
+
+@media screen and (max-width: 576px) {
+  .hedaer-left {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .menu-icon {
+    display: inline;
+  }
+}

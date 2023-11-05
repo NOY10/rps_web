@@ -1,0 +1,21 @@
+/*Search*/
+.search-bar {
+  display: flex;
+  border: #263043;
+  border-radius: 4px;
+  background-color: #f7f8f8;
+  padding: 5px 2px 5px 2px;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-icon {
+  padding: 2px;
+  margin-right: 4px;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  padding-left: 4px;
+}
