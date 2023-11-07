@@ -3,10 +3,10 @@ import "./yeardept.css";
 import ModuleResult from "./ModuleResult";
 import ResultView from "./resultView";
 
-function YearDept({ department, year }) {
+function YearDept({ department, year, semester }) {
   const moduleData = {
     "First Year": {
-      "BE(IT)": ["Module1", "Module2"],
+      "BE(IT)": ["Introduction to Programming", "Module2"],
       "BE(Electrical)": ["Module3", "Module4"],
       "BE(ECE)": ["Module3", "Module4"],
       "BE(Civil)": ["Module3", "Module4"],
@@ -27,7 +27,7 @@ function YearDept({ department, year }) {
 
   const moduleCodeData = {
     "First Year": {
-      "BE(IT)": ["Code5", "Code5"],
+      "BE(IT)": ["CPL101", "Code5"],
       "BE(Electrical)": ["Code5", "Code5"],
       "BE(ECE)": ["Code5", "Code5"],
       "BE(Civil)": ["Code5", "Code5"],
@@ -54,7 +54,7 @@ function YearDept({ department, year }) {
   const moduleCodes = moduleCodeData[year] && moduleCodeData[year][department];
 
   const handleModuleClick = (module, moduleCode) => {
-    setSelectedModule({ module, moduleCode, year, department });
+    setSelectedModule({ module, moduleCode, year, department, semester });
     setclickResultView("");
   };
 
@@ -67,28 +67,40 @@ function YearDept({ department, year }) {
     <div className="yeardeptContainer">
       <div className="yeardeptContainer_main">
         <div className="yeardeptContainer_left">
-          <h2>Department: {department}</h2>
-          <h2>Year: {year}</h2>
-          {modules && moduleCodes ? (
-            <div className="moduleContainer">
-              {modules.map((module, index) => (
-                <div
-                  className="moduleinfo"
-                  key={index}
-                  onClick={() => handleModuleClick(module, moduleCodes[index])}
-                >
-                  <div className="modname">{module}</div>
-                  <div className="modCode">{moduleCodes[index]}</div>
-                </div>
-              ))}
-
-              <button className="viewResultButton" onClick={() => viewResult()}>
-                View Result
-              </button>
+          <div className="outermoduleContainer">
+            <div className="deptinfo">
+              <p>{department}</p>
+              <p>{year}</p>
             </div>
-          ) : (
-            <p>No modules found for the selected department and year.</p>
-          )}
+            {modules && moduleCodes ? (
+              <div className="moduleContainer">
+                {modules.map((module, index) => (
+                  <div
+                    className="moduleinfo"
+                    key={index}
+                    onClick={() =>
+                      handleModuleClick(module, moduleCodes[index])
+                    }
+                  >
+                    <div className="blue"></div>
+                    <div className="modnameCode">
+                      <div className="modname">{module}</div>
+                      <div className="modCode">{moduleCodes[index]}</div>
+                    </div>
+                  </div>
+                ))}
+
+                <button
+                  className="viewResultButton"
+                  onClick={() => viewResult()}
+                >
+                  View Result
+                </button>
+              </div>
+            ) : (
+              <p>No modules found for the selected department and year.</p>
+            )}
+          </div>
         </div>
         <div className="yeardeptContainer_right">
           {clickResultView !== "click" ? (

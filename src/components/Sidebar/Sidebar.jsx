@@ -70,6 +70,7 @@ function Sidebar({ openSidebarToggle, OpenSidebar, handleDeptSelection }) {
 
   const [activeYear, setActiveYear] = useState(null);
   const [activeDept, setActiveDept] = useState(null);
+  const [semester, setSemester] = useState(null);
 
   const handleYearClick = (year) => {
     if (activeYear === year) {
@@ -108,7 +109,10 @@ function Sidebar({ openSidebarToggle, OpenSidebar, handleDeptSelection }) {
               <li className="sidebar-list-yearList" key={index}>
                 <a
                   className="sidebar-list-year"
-                  onClick={() => handleYearClick(yearData.year)}
+                  onClick={() => {
+                    setSemester((index + 1) * 2);
+                    handleYearClick(yearData.year);
+                  }}
                 >
                   <BsPeopleFill className="icon" /> {yearData.year}
                 </a>
@@ -122,7 +126,11 @@ function Sidebar({ openSidebarToggle, OpenSidebar, handleDeptSelection }) {
                           }`}
                           key={deptIndex}
                           onClick={() => {
-                            handleDeptSelection(department, activeYear);
+                            handleDeptSelection(
+                              department,
+                              activeYear,
+                              semester
+                            );
                             setActiveDept(department);
                           }}
                         >

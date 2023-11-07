@@ -9,14 +9,16 @@ function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
   const [selectedDept, setSelectedDept] = useState(null);
   const [selectedyear, setSelectedYear] = useState(null);
+  const [semester, setSemester] = useState(null);
 
   const OpenSidebar = () => {
     setOpenSidebarToggle(!openSidebarToggle);
   };
 
-  const handleDeptSelection = (deptName, deptIndex) => {
+  const handleDeptSelection = (deptName, deptIndex, sem) => {
     setSelectedDept(deptName);
     setSelectedYear(deptIndex);
+    setSemester(sem);
     setOpenSidebarToggle(false);
   };
 
@@ -30,15 +32,21 @@ function App() {
       />
       <Routes>
         <Route exact path="/dashboard" element={<Home />} />
-        <Route
+        {/* <Route
           path="/department/:department"
           element={<YearDept handleDeptSelection={handleDeptSelection} />}
-        />
+        /> */}
         {selectedDept && (
           <Route
             exact
             path={`/department/${selectedDept}`}
-            element={<YearDept department={selectedDept} year={selectedyear} />}
+            element={
+              <YearDept
+                department={selectedDept}
+                year={selectedyear}
+                semester={semester}
+              />
+            }
           />
         )}
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
